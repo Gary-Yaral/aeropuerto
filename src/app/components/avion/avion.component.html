@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="content-formulario">
+    <h1>{{updateActive ? "Modificar Avión" : "Nuevo Avión"}}</h1>
+    <form class="card-data" [formGroup]="airplaneData">
+      <div class="input-container">
+        <label for="nombre_aeronave">Nombre:</label>
+        <input class="input" type="text" name="nombre_aeronave" formControlName="nombre_aeronave" placeholder="nombre_aeronave">
+        <sub class="error" [class.hidden]="messageError('nombre_aeronave')">
+          Ingresa un Nombre válido.
+        </sub>
+      </div>
+      <div class="input-container">
+        <label for="company">Compañía:</label>
+        <input class="input" type="text" name="company" formControlName="company" placeholder="Compañía">
+        <sub class="error" [class.hidden]="messageError('company')">
+          Ingresa el nombre de la compañía.
+        </sub>
+      </div>
+      <div class="input-container">
+        <label for="capacidad_pasajeros">Capacidad de Pasajeros:</label>
+        <input class="input" type="number" name="capacidad_pasajeros" formControlName="capacidad_pasajeros"
+          placeholder="Capacidad de Pasajeros">
+        <sub class="error" [class.hidden]="messageError('capacidad_pasajeros')">
+          Ingresa una capacidad válida.
+        </sub>
+      </div>
+      <div class="input-container">
+        <label for="horas_vuelo">Horas de Vuelo:</label>
+        <input class="input" type="number" name="horas_vuelo" formControlName="horas_vuelo" placeholder="Horas de Vuelo">
+        <sub class="error" [class.hidden]="messageError('horas_vuelo')">
+          Ingresa las horas de vuelo.
+        </sub>
+      </div>
+      <div class="input-container">
+        <label for="piloto">Piloto:</label>
+        <select class="input" formControlName="piloto">
+          <option value="">Seleccionar piloto </option>
+          <option *ngFor="let piloto of pilotos" [value]="piloto.id">
+            {{ piloto.name }} {{ piloto.lastname }}
+          </option>
+        </select>
+      </div>
+
+      <div class="container_buttons">
+        <button class="button2 btn_nuevo" [class.hidden]="updateActive" (click)="saveAvion()">Crear</button>
+        <button class="button2 btn_enviar" [class.hidden]="!updateActive" (click)="updateAvion()">Actualizar</button>
+        <button class="button2 btn_eliminar" (click)="resetForm()">Cancelar</button>
+      </div>
+      <sub class="error" [class.hidden]="errorSend === ''">
+        {{errorSend}}
+      </sub>
+    </form>
+  </div>
+
+  <div class="contenedor_tabla">
+    <h3 class="subtitle">Aviones Registrados</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Compañía</th>
+            <th>Capacidad de Pasajeros</th>
+            <th>Horas de Vuelo</th>
+            <th>Piloto</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [class.hidden]="avionesLista.length > 0">
+            <td class="td-center" colspan="7">No hay registros todavía</td>
+          </tr>
+          <tr *ngFor="let data of avionesLista; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ data.avion.nombre_aeronave }}</td>
+            <td>{{ data.avion.company }}</td>
+            <td>{{ data.avion.capacidad_pasajeros }}</td>
+            <td>{{ data.avion.horas_vuelo }}</td>
+            <td>{{ data.piloto.name + ' '+data.piloto.lastname  }}</td>
+
+            <td>
+              <div class="container_table_buttons">
+                <button class="button3 btn_editar" (click)="loadUpdate(data.avion.id)">Editar</button>
+                <button class="button3 btn_eliminar" (click)="deleteAvion(data.avion.id)">Borrar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

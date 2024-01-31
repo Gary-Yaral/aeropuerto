@@ -1,0 +1,66 @@
+@use '../vars/colors' as color;
+
+// Muletilla para mostrar que el campo es requerido
+.requerido {
+    font-size: 10px;
+    color: var(--red);
+}
+
+// Inputs
+.input {
+    height: 40px;
+    margin: 4px 0;
+    border: 1px solid transparent;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 13px;
+    letter-spacing: .15px;
+    outline: none;
+    background-color: color.$white;
+    transition: .25s ease;
+    border-radius: 8px;
+
+    box-shadow:
+        inset 2px 2px 4px color.$sha2,
+        inset -2px -2px 4px color.$sha1;
+
+    &:focus {
+        box-shadow:
+            inset 4px 4px 4px color.$sha2,
+            inset -4px -4px 4px color.$sha1;
+    }
+}
+
+.input:focus,
+.input:active {
+    border: 1px solid var(--focus_input_1);
+}
+
+.input:focus {
+    box-shadow: 0 0 0 1px var(--focus_input_1), 0 0 0 4px var(--focus_input_2);
+}
+
+
+// input inactivo
+.inactive {
+    background-color: darken(color.$white, 5%) !important;
+    box-shadow:
+        inset 2px 2px 4px darken(color.$sha2, 10%),
+        inset -2px -2px 4px darken(color.$sha1, 10%);
+    cursor: default;
+}
+
+.inactive:focus,
+.inactive:active {
+    border: 1px solid lighten(color.$primary, 50%);
+}
+
+
+// Estilos para redimencion de text area
+.textarea {
+    resize: vertical;
+    min-height: 75px;
+    max-height: 300px;
+    padding-top: 10px;
+    padding-right: 20px;
+}

@@ -1,0 +1,596 @@
+// Estilos generales
+@use '../vars/colors' as colors;
+
+$transition: 1.25s;
+
+// Botones
+.button {
+	width: 180px;
+	height: 50px;
+	border-radius: 25px;
+	font-weight: 700;
+	font-size: 14px;
+	letter-spacing: 1.15px;
+	background-color: darken(colors.$primary, 20%);
+	color: colors.$white;
+	box-shadow: 2px 2px 5px rgba(colors.$black, .5);
+
+	border: none;
+	outline: none;
+
+	@media(max-width: 380px) {
+		height: 40px;
+	}
+
+	@media((max-width: 335px) and (min-width: 0px)) {
+		width: 100%;
+		padding: 0 25px;
+	}
+
+	&:hover {
+		background-color: darken(colors.$primary, 30%);
+	}
+}
+
+// Boton para cambiar entre las ventanas de login y registro
+.button_container_register,
+.button_container_login {
+	z-index: 100;
+	display: grid;
+
+	.button1 {
+		width: 180px;
+		height: 40px;
+		border-radius: 0px 5px 0px 0px;
+		font-weight: 700;
+		font-size: 14px;
+		color: colors.$white;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+
+		&:hover {
+			&::after {
+				background-color: darken(rgba(colors.$primary, .7), 15%);
+			}
+		}
+
+		@media((max-width: 350px) and (min-width: 0px)) {
+			font-size: 10px;
+			height: 30px;
+			width: 150px;
+			transform: scale(.9);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			cursor: pointer;
+			backdrop-filter: blur(3px);
+			background-color: darken(rgba(colors.$primary, .6), 20%);
+			border-radius: 0px 5px 0px 0px;
+			z-index: -1;
+		}
+	}
+}
+
+
+.button2 {
+	width: 180px;
+	height: 40px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 14px;
+	color: colors.$white;
+	box-shadow:
+		5px 5px 5px colors.$sha2,
+		-5px -5px 5px colors.$sha1;
+
+	border: none;
+	outline: none;
+
+	@media((max-width: 350px) and (min-width: 0px)) {
+		font-size: 10px;
+		height: 30px;
+		width: 150px;
+		transform: scale(.9);
+	}
+}
+
+.button3 {
+	width: 60px;
+	height: 40px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 14px;
+	color: colors.$white;
+	box-shadow:
+		5px 5px 5px colors.$sha2,
+		-5px -5px 5px colors.$sha1;
+
+	border: none;
+	outline: none;
+}
+
+.button4 {
+	width: 30px;
+	height: 30px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 14px;
+	border: none;
+	outline: none;
+
+	@media(max-width: 768px) {}
+
+	@media(max-width: 480px) {
+		transform: scale(.9);
+	}
+
+	@media(max-width: 375px) {
+		transform: scale(.8);
+	}
+
+	@media((max-width: 350px) and (min-width: 0px)) {
+		height: 30px;
+	}
+}
+
+.button5 {
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 20px;
+	color: colors.$white;
+	box-shadow:
+		5px 5px 5px colors.$sha2,
+		-5px -5px 5px colors.$sha1;
+
+	border: none;
+	outline: none;
+
+	i {
+		font-size: 30px;
+	}
+
+	@media((max-width: 350px) and (min-width: 0px)) {
+		font-size: 10px;
+		height: 30px;
+		width: 150px;
+		transform: scale(.9);
+	}
+}
+
+.button_forma {
+	width: 180px;
+	height: 40px;
+	color: colors.$white;
+	border-radius: 0px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+
+	filter: drop-shadow(3px 3px 1.5px rgba(colors.$black, .5));
+
+	&:hover {
+		filter: drop-shadow(3px 3px 5px rgba(colors.$black, .5));
+	}
+
+	&:hover {
+		&::after {
+			background-color: darken(rgba(colors.$primary, .9),40%);
+		}
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		cursor: pointer;
+		border-radius: 0px;
+		backdrop-filter: blur(3px);
+		background-color: darken(rgba(colors.$primary, .6), 40%);
+		z-index: -1;
+	}
+}
+
+
+
+.efects {
+	&__button {
+		cursor: pointer;
+
+		&:hover {
+			box-shadow:
+				6px 6px 10px colors.$sha2,
+				-6px -6px 10px colors.$sha1;
+			transform: scale(.985);
+			transition: .25s;
+		}
+
+		&:active,
+		&:focus {
+			box-shadow:
+				2px 2px 6px colors.$sha2,
+				-2px -2px 6px colors.$sha1;
+			transform: scale(.97);
+			transition: .25s;
+		}
+	}
+}
+
+.efects2 {
+	&__button2 {
+		cursor: pointer;
+
+		&:hover,
+		&:active,
+		&:focus {
+			transition: .25s;
+		}
+	}
+}
+
+.btn_actualizar {
+	background-color: colors.$btn-color-actualizar;
+}
+
+.btn_actualizar:hover {
+	background-color: darken(colors.$btn-color-actualizar, 10%);
+}
+
+.btn_buscar {
+	background-color: colors.$btn-color-buscar;
+}
+
+.btn_buscar:hover {
+	background-color: darken(colors.$btn-color-buscar, 10%);
+}
+
+.btn_cancelar {
+	background-color: colors.$btn-color-cancelar;
+}
+
+.btn_cancelar:hover {
+	background-color: darken(colors.$btn-color-cancelar, 10%);
+}
+
+.btn_editar {
+	background-color: colors.$btn-color-editar;
+}
+
+.btn_editar:hover {
+	background-color: darken(colors.$btn-color-editar, 10%);
+}
+
+.btn_eliminar {
+	background-color: colors.$btn-color-eliminar;
+}
+
+.btn_eliminar:hover {
+	background-color: darken(colors.$btn-color-eliminar, 10%);
+}
+
+.btn_enviar {
+	background-color: colors.$btn-color-enviar;
+}
+
+.btn_enviar:hover {
+	background-color: darken(colors.$btn-color-enviar, 10%);
+}
+
+.btn_ingresar {
+	background-color: colors.$btn-color-ingresar;
+}
+
+.btn_ingresar:hover {
+	background-color: darken(colors.$btn-color-ingresar, 10%);
+}
+
+.btn_nuevo {
+	background-color: colors.$btn-color-nuevo;
+}
+
+.btn_nuevo:hover {
+	background-color: darken(colors.$btn-color-nuevo, 10%);
+}
+
+.btn_copy {
+	background-color: colors.$btn-color-copy;
+}
+
+.btn_copy:hover {
+	background-color: darken(colors.$btn-color-copy, 10%);
+}
+
+.btn_excel {
+	background-color: colors.$btn-color-excel;
+}
+
+.btn_excel:hover {
+	background-color: darken(colors.$btn-color-excel, 10%);
+}
+
+.btn_csv {
+	background-color: colors.$btn-color-csv;
+}
+
+.btn_csv:hover {
+	background-color: darken(colors.$btn-color-csv, 10%);
+}
+
+// Botones huecos
+.btn_editar2 {
+	border: 1px solid colors.$btn-color-editar;
+	color: colors.$btn-color-editar;
+}
+
+.btn_editar2:hover {
+	background-color: darken(colors.$btn-color-editar, 0%);
+	color: colors.$white;
+}
+
+.btn_eliminar2 {
+	border: 1px solid colors.$btn-color-eliminar;
+	color: colors.$btn-color-eliminar;
+}
+
+.btn_eliminar2:hover {
+	background-color: darken(colors.$btn-color-eliminar, 0%);
+	color: colors.$white;
+}
+
+.btn_organizaciones2 {
+	border: 1px solid colors.$btn-color-navegacion;
+	color: colors.$btn-color-navegacion;
+}
+
+.btn_organizaciones2:hover {
+	background-color: darken(colors.$btn-color-navegacion, 0%);
+	color: colors.$white;
+}
+
+// Botones de navegacion
+.btn_navegacion {
+	background-color: colors.$btn-color-navegacion;
+}
+
+.btn_navegacion:hover {
+	background-color: darken(colors.$btn-color-navegacion, 5%);
+}
+
+.btn_navegacion:disabled {
+	cursor: default;
+	background-color: darken(colors.$btn-color-navegacion, 15%);
+	transform: none;
+	box-shadow: none;
+	opacity: .6;
+}
+
+/*
+* Boton top
+*/
+#btn_top {
+	// display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 50px;
+	height: 50px;
+	z-index: 9999;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border: none;
+	outline: none;
+	background-color: colors.$primary;
+	color: colors.$white;
+	cursor: pointer;
+	border-radius: 10px;
+	font-size: 20px;
+
+	&:hover {
+		background-color: darken(colors.$primary, 10%);
+	}
+
+	@media((max-width: 335px) and (min-width: 0px)) {
+		bottom: 5px;
+		right: 5px;
+		width: 35px;
+		height: 35px;
+		font-size: 15px;
+	}
+}
+
+
+/**
+* Boton para mas configuraciones
+*/
+$menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.80, 0.52, 0.52);
+
+.list-container {
+	position: fixed;
+	top: 200px;
+	right: 40px;
+
+	&.active {
+		.more-button-list {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		.more-button-list-item {
+			animation: fadeInItem .6s .2s forwards;
+
+			&:nth-child(2) {
+				animation-delay: .4s;
+			}
+
+			&:nth-child(3) {
+				animation-delay: .6s;
+			}
+
+			&:nth-child(4) {
+				animation-delay: .8s;
+			}
+		}
+
+		.more-button {
+			animation: onePulse .6s forwards linear;
+		}
+
+		.menu-icon-wrapper {
+			transform: rotate(-45deg);
+		}
+
+		.menu-icon-line {
+			&.first {
+				transform: rotate(-90deg) translateX(1px);
+			}
+
+			&.last {
+				transform: rotate(-90deg) translateX(-1px);
+			}
+		}
+	}
+}
+
+.more-button {
+	background-color: colors.$button-bg;
+	box-shadow: 0px 0px 0px 4px rgba(colors.$primary, .3);
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	border: none;
+	opacity: .5;
+	padding: 0;
+	cursor: pointer;
+	transition: .2s ease-in;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: colors.$white;
+	position: fixed;
+	z-index: 2;
+	animation: moveButton 0.3s ease-out forwards;
+	right: -15px;
+
+
+	&:hover,
+	&:focus {
+		box-shadow: 0px 0px 0px 8px rgba(colors.$primary, .3);
+		background-color: darken(colors.$button-bg, 4%);
+		opacity: 1;
+		right: auto;
+		// Definir la animación cuando se hace hover
+		animation: moveButtonHover 0.3s ease-in forwards;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+	&-list {
+		background-color: colors.$list-bg;
+		border-radius: 8px;
+		list-style-type: none;
+		width: 170px;
+		height: 185px;
+		box-shadow: 0px 0px 4px 4px rgba(150, 157, 249, 0.16);
+		padding: 0;
+		padding: 6px 10px;
+		position: fixed;
+		right: 24px;
+		opacity: 0;
+		transform: scale(0);
+		transform-origin: top right;
+		transition: all .3s ease .1s;
+
+		li {
+			opacity: 0;
+
+			&:hover {
+				border-radius: 5px;
+			}
+		}
+	}
+
+	&-list-item a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: var(--dark);
+		padding: 10px;
+		border-radius: 4px;
+		gap: 5px;
+		padding-left: 15px;
+		cursor: pointer;
+		position: relative;
+		transition: .2s ease-in;
+
+		&:hover {
+			color: colors.$text-color-hover;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			height: 1px;
+			width: calc(100% - 24px);
+			left: 12px;
+			bottom: 0;
+			background-color: rgba(132, 160, 244, 0.1);
+		}
+
+		&:last-child:after {
+			display: none;
+		}
+
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+
+		span {
+			display: inline-block;
+			line-height: 20px;
+			font-size: 14px;
+			margin-left: 8px;
+		}
+	}
+}
+
+.menu-icon-wrapper {
+	border-radius: 2px;
+	width: 15px;
+	height: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	cursor: pointer;
+	transition: transform 330ms ease-out;
+}
+
+.menu-icon-line {
+	background-color: colors.$white;
+	border-radius: 2px;
+	width: 100%;
+	height: 2px;
+
+	&.half {
+		width: 50%;
+	}
+
+	&.first {
+		transition: $menu-icon-transition;
+		transform-origin: right;
+	}
+
+	&.last {
+		align-self: flex-end;
+		transition: $menu-icon-transition;
+		transform-origin: left;
+	}
+}

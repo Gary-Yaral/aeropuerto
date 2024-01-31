@@ -1,0 +1,19 @@
+@use 'assets/scss/vars/colors';
+@use 'assets/scss/components/scrool';
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  user-select: none;
+}
+
+body {
+  background-color: colors.$bg;
+}
+
+.error {
+  color: colors.$red;
+  padding: 10px;
+  font-size: 10px;
+}

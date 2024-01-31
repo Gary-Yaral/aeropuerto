@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="content-formulario">
+      <h1>{{updateActive ? "Modificar Aeropuerto" : "Nuevo Aeropuerto"}}</h1>
+      <form class="card-data" [formGroup]="aeropuertoData">
+        <div class="input-container">
+          <input class="input" type="text" name="nombre_aeropuerto" formControlName="nombre_aeropuerto" placeholder="Nombre del Aeropuerto">
+          <sub class="error" [class.hidden]="messageError('nombre_aeropuerto')">
+            Ingresa el nombre del aeropuerto.
+          </sub>
+        </div>
+        <div class="input-container">
+          <input class="input" type="text" name="pais" formControlName="pais" placeholder="País">
+          <sub class="error" [class.hidden]="messageError('pais')">
+            Ingresa el país del aeropuerto.
+          </sub>
+        </div>
+        <div class="input-container">
+          <input class="input" type="text" name="ciudad" formControlName="ciudad" placeholder="Ciudad">
+          <sub class="error" [class.hidden]="messageError('ciudad')">
+            Ingresa la ciudad del aeropuerto.
+          </sub>
+        </div>
+        <div class="input-container">
+          <input class="input" type="number" name="numero_hagares" formControlName="numero_hagares" placeholder="Número de Hangares">
+          <sub class="error" [class.hidden]="messageError('numero_hagares')">
+            Ingresa un número válido de hangares.
+          </sub>
+        </div>
+  
+        <div class="container_buttons">
+          <button class="button2 btn_nuevo" [class.hidden]="updateActive" (click)="saveAeropuerto()">Crear</button>
+          <button class="button2 btn_enviar" [class.hidden]="!updateActive" (click)="updateAeropuerto()">Actualizar</button>
+          <button class="button2 btn_eliminar" (click)="resetForm()">Cancelar</button>
+        </div>
+        <sub class="error" [class.hidden]="errorSend === ''">
+          {{errorSend}}
+        </sub>
+      </form>
+    </div>
+  
+    <div class="contenedor_tabla">
+      <h3 class="subtitle">Aeropuertos Registrados</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Nombre</th>
+              <th>País</th>
+              <th>Ciudad</th>
+              <th>N° de Hangares</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [class.hidden]="aeropuertos.length > 0">
+              <td class="td-center" colspan="6">No hay registros todavía</td>
+            </tr>
+            <tr *ngFor="let aeropuerto of aeropuertos; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ aeropuerto.nombre_aeropuerto }}</td>
+              <td>{{ aeropuerto.pais }}</td>
+              <td>{{ aeropuerto.ciudad }}</td>
+              <td>{{ aeropuerto.numero_hagares }}</td>
+              <td>
+                <div class="container_table_buttons">
+                  <button class="button3 btn_editar" (click)="loadUpdate(aeropuerto.id)">Editar</button>
+                  <button class="button3 btn_eliminar" (click)="deleteAeropuerto(aeropuerto.id)">Borrar</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

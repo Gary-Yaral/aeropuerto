@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="content-formulario">
+    <h1>{{updateActive ? "Modificar Piloto": "Nuevo Piloto"}}</h1>
+    <form class="card-data" [formGroup]="employeeData">
+      <div class="input-container">
+        <input class="input" type="text" name="dni" formControlName="dni" placeholder="Cédula">
+        <sub class="error" [class.hidden]="messageError('dni')">
+          Ingrese un número de cedúla válido. Solo se admiten 10 caracteres.
+        </sub>
+      </div>
+      <div class="input-container">
+        <input class="input" type="text" name="name" formControlName="name" placeholder="Nombre">
+        <sub class="error" [class.hidden]="messageError('name')">
+          Solo se admiten letras mayusculas, minusculas y espacios. Asegurece de no tener espacios dobles y ni espacios
+          al comienzo ni al final.
+        </sub>
+      </div>
+      <div class="input-container">
+        <input class="input" type="text" name="lastname" formControlName="lastname" placeholder="Apellido">
+        <sub class="error" [class.hidden]="messageError('lastname')">
+          Solo se admiten letras mayusculas, minusculas y espacios. Asegurece de no tener espacios dobles y ni espacios
+          al comienzo ni al final.
+        </sub>
+      </div>
+      <div class="input-container">
+        <input class="input" type="text" name="address" formControlName="address" placeholder="Dirección">
+        <sub class="error" [class.hidden]="messageError('address')">
+          Solo se admiten letras mayusculas, minusculas y espacios. Asegurece de no tener espacios dobles y ni espacios
+          al comienzo ni al final.
+        </sub>
+      </div>
+      <div class="input-container">
+        <input class="input" type="date" name="birthday" formControlName="birthday" placeholder="Fecha de nacimiento">
+        <sub class="error" [class.hidden]="messageError('birthday')">
+          Debes escribir una fecha de nacimiento.
+        </sub>
+      </div>
+      <div class="input-container">
+        <input class="input" type="date" name="fecha_emis_licencia" formControlName="fecha_emis_licencia" placeholder="Fecha de licenciamiento">
+        <sub class="error" [class.hidden]="messageError('fecha_emis_licencia')">
+          Debes escribir una fecha de nacimiento.
+        </sub>
+      </div>
+
+      <div class="container_buttons">
+        <button class="button2 btn_nuevo" [class.hidden]="updateActive" (click)="savePiloto()">Crear</button>
+        <button class="button2 btn_enviar" [class.hidden]="!updateActive" (click)="updatePiloto()">Actualizar</button>
+        <button class="button2 btn_eliminar" (click)="resetForm()">Cancelar</button>
+      </div>
+      <sub class="error" [class.hidden]="errorSend === ''">
+        {{errorSend}}
+      </sub>
+    </form>
+  </div>
+
+
+  <div class="contenedor_tabla">
+    <h3 class="subtitle">Pilotos Registrados</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Cédula</th>
+            <th>Nombres</th>
+            <th>Apellido</th>
+            <th>Dirección</th>
+            <th>F. Nacimiento</th>
+            <th>F. Licenciamiento</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [class.hidden]="pilotos.length > 0">
+            <td class="td-center" colspan="6">No hay registros todavía</td>
+          </tr>
+          <tr *ngFor="let piloto of pilotos; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ piloto.dni }}</td>
+            <td>{{ piloto.name }}</td>
+            <td>{{ piloto.lastname }}</td>
+            <td>{{ piloto.address }}</td>
+            <td>{{ piloto.birthday }}</td>
+            <td>{{ piloto.fecha_emis_licencia}}</td>
+            <td>
+              <div class="container_table_buttons">
+                <button class="button3 btn_editar" (click)="loadUpdate(piloto.id)">Editar</button>
+                <button class="button3 btn_eliminar" (click)="deleteCard(piloto.id)">Borrar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

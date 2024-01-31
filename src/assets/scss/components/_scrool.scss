@@ -1,0 +1,22 @@
+// Importaciones generales
+@use '../vars/colors' as colors;
+
+body::-webkit-scrollbar {
+	width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+	border: 1px solid colors.$primary;
+	background: rgba(colors.$primary, .3);
+	border-radius: 20px 0 0 20px;
+	box-shadow: inset 1px 1px 0 lighten(colors.$primary, 10%),
+		inset -1px -1px 0 lighten(colors.$primary, 10%);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: lighten(colors.$primary, 0%);
+}

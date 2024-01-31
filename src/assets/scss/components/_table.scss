@@ -1,0 +1,33 @@
+@use '../vars/colors' as colors;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilo para las celdas de la cabecera */
+th {
+  background-color: colors.$primary;
+  color: colors.$white;
+  padding: 15px;
+  text-align: left;
+  text-align: center;
+}
+
+/* Estilo para las celdas de los datos */
+td {
+  padding: 15px;
+  text-align: center;
+}
+
+/* Estilo para las filas impares (para agregar un efecto de zebra) */
+tbody tr:nth-child(odd) {
+  background-color: colors.$sha1;
+}
+
+/* Estilo al pasar el ratón sobre las filas */
+tbody tr:hover {
+  background-color: rgba(colors.$primary, .2);
+}

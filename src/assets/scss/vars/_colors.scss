@@ -1,0 +1,38 @@
+// Colores de la pagina
+$primary: #326aca;
+
+$bg: #f1f0f6;
+
+$sha1: #f9f9f9;
+$sha2: #d1d9e6;
+
+$black: #000;
+$white: #fff;
+$gray: #808080;
+
+$red: #cc1010;
+
+:root {
+  --focus_input_1: #{$primary};
+  --focus_input_2: #{lighten($primary, 30%)};
+}
+
+// Color de botones
+$btn-color-eliminar: #E74C3C;
+$btn-color-enviar: #27AE60;
+$btn-color-buscar: #2980B9;
+$btn-color-editar: #F39C12;
+$btn-color-cancelar: #95A5A6;
+$btn-color-nuevo: #3498DB;
+$btn-color-actualizar: #2ECC71;
+$btn-color-ingresar: #1a7500;
+$button-bg: #5c67ff;
+$list-bg: #fff;
+$text-color: #1c3991;
+$text-color-hover: #5c67ff;
+
+$btn-color-copy: #1e88e5;
+$btn-color-excel: #4caf50;
+$btn-color-csv: #ff9800;
+
+$btn-color-navegacion: #009c8c;
