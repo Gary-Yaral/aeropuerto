@@ -5,6 +5,7 @@ import { Enviroment } from 'src/app/environment/enviroment';
 import Swal from 'sweetalert2';
 
 const uri_local = Enviroment.uri_local;
+const uri_local_mongo = Enviroment.uri_local_mongo;
 
 @Component({
   selector: 'app-avion',
@@ -18,6 +19,7 @@ export class AvionComponent implements OnInit {
   errorSend: string = "";
   selectedAvion: string = "";
   urlAviones: string = uri_local + "aviones";
+  urlVuelos: string = uri_local_mongo + "vuelos";
 
   constructor(private springService: ApiSpringService) {}
 
@@ -146,6 +148,7 @@ export class AvionComponent implements OnInit {
                 this.errorSend = ''
                 this.getAviones()
                 Swal.fire("Ok", response.message, "success");
+                this.deleteVuelosRelacionados(avionId)
               } else {
                 Swal.fire(response.message, '', 'error');
               }
@@ -157,6 +160,21 @@ export class AvionComponent implements OnInit {
           );
       }
     });
+  }
+
+  deleteVuelosRelacionados(avionId: string) {
+    this.springService
+      .doDelete(`${this.urlVuelos}/todos/${avionId}`, this.airplaneData.value)
+      .subscribe((response: any) => {
+        if (response) {
+          Swal.fire("Ok", 'Vuelos relacionados se han eliminado', "success");
+        } else {
+          Swal.fire('No se ha podido eliminar los vuelos relacionados', '', 'error');
+        }
+      }, (error: any) => {
+        console.error('Error al eliminar aviones vinculados:', error);
+      }
+      )
   }
 
   resetForm() {
